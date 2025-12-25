@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Security Checker</title>
+</head>
+<body>
+
+<h2>Password Security Checker</h2>
+
+<form method="POST">
+    <input type="password" name="password" placeholder="Enter password" required>
+    <button type="submit">Check</button>
+</form>
+
+{% if result %}
+<hr>
+<h3>Security Analysis</h3>
+
+{% if result.breached %}
+<p>❌ Password found in data breach</p>
+{% else %}
+<p>✅ Password not found in known breaches</p>
+{% endif %}
+
+<p>Password strength score: {{ result.score }}/5</p>
+<p>Risk Level: {{ result.risk }}</p>
+
+{% endif %}
+
+</body>
+</html>
